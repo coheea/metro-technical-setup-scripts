@@ -222,7 +222,7 @@ git config user.name "$AppName[bot]"
 git config user.email "$AppId+$AppName[bot]@users.noreply.github.com"
 $DetatchedHead = git rev-parse --abbrev-ref --symbolic-full-name HEAD
 if($DetatchedHead -eq "HEAD"){
-    git remote add PipelineOrigin "https://$($AppName):$Token@github.com/ebetsystems/metro-pipeline.git"
+    git remote add PipelineOrigin "https://$($AppName):$Token@github.com/coheea/metro-pipeline.git"
     git branch temp
     git checkout temp
     git add $CatalogFile
@@ -240,7 +240,7 @@ if($DetatchedHead -eq "HEAD"){
     echo ("NEW_SHA=" + "$SHA_NEW") >> $env:GITHUB_ENV
 } else{
     try{
-        git remote add PipelineOrigin "https://$($AppName):$Token@github.com/ebetsystems/metro-pipeline.git"
+        git remote add PipelineOrigin "https://$($AppName):$Token@github.com/coheea/metro-pipeline.git"
         Write-Host "in try statement"
         git add $CatalogFile
         git commit -m "Update catalog for $NextEnvironment"
