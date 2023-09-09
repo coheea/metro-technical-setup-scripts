@@ -246,6 +246,7 @@ if($DetatchedHead -eq "HEAD"){
         git commit -m "Update catalog for $NextEnvironment"
         #caters for if catalog was updated during the process of this running so it can pull the latest and update from there
         $pushResult = git push PipelineOrigin "main" 2>&1
+        Write-Host $pushResult
         while($pushResult -match "error: failed to push some refs"){
             git pull PipelineOrigin main
             $pushResult = git push PipelineOrigin "main" 2>&1
@@ -256,6 +257,7 @@ if($DetatchedHead -eq "HEAD"){
         git commit -m "Update catalog for $NextEnvironment"
         #caters for if catalog was updated during the process of this running so it can pull the latest and update from there
         $pushResult = git push 2>&1
+        Write-Host $pushResult
         while($pushResult -match "error: failed to push some refs"){
             git pull PipelineOrigin main
             $pushResult = git push 2>&1
