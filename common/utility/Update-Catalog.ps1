@@ -241,6 +241,7 @@ if($DetatchedHead -eq "HEAD"){
 } else{
     try{
         git remote add PipelineOrigin "https://$($AppName):$Token@github.com/ebetsystems/metro-pipeline.git"
+        Write-Host "in try statement"
         git add $CatalogFile
         git commit -m "Update catalog for $NextEnvironment"
         #caters for if catalog was updated during the process of this running so it can pull the latest and update from there
@@ -250,6 +251,7 @@ if($DetatchedHead -eq "HEAD"){
             $pushResult = git push PipelineOrigin "main" 2>&1
         }
     } catch{
+        Write-Host "in catch statement"
         git add $CatalogFile
         git commit -m "Update catalog for $NextEnvironment"
         #caters for if catalog was updated during the process of this running so it can pull the latest and update from there
